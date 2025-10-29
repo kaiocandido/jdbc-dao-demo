@@ -1,5 +1,6 @@
 package application;
 
+import model.dao.SallerDao;
 import model.entities.Department;
 import model.entities.Seller;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,5 @@ public class Main {
         Seller sl = new Seller(1, "kaio", "kaio.candf@gmail.com", new Date(), 7500.00, dp);
 
         System.out.println(sl);
-
     }
 }

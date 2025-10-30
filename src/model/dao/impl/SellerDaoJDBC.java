@@ -7,7 +7,6 @@ import model.entities.Department;
 import model.entities.Seller;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -88,7 +87,21 @@ public class SellerDaoJDBC implements SallerDao {
 
     @Override
     public void deleteById(Integer id) {
+        PreparedStatement st = null;
 
+        try{
+            st = conn.prepareStatement("DELETE FROM seller "
+                    + "WHERE id = ?");
+
+            st.setInt(1, id);
+
+            st.executeUpdate();
+
+        }catch (SQLException e){
+            throw new DbException(e.getMessage());
+        }finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
